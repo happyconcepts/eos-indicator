@@ -25,7 +25,7 @@ from gi.repository import AppIndicator3 as AppIndicator
 
 PROJECTDIR = os.path.dirname(os.path.realpath(__file__))
 
-dir = os.path.expanduser("~") +"/.bitshares-indicator"
+dir = os.path.expanduser("~") +"/.eos-indicator"
 if not os.path.exists(dir):
     os.makedirs(dir)
 prefFile = os.path.join(dir, 'prefs.json')
@@ -34,7 +34,7 @@ test = False
 if test == True:
     print ("test mode")
 
-class buyBTSindicator(object):
+class EOSindicator(object):
     def __init__(self):
         self.ind = AppIndicator.Indicator.new(APPID,
 	PROJECTDIR + "/icons/eos.png",AppIndicator.IndicatorCategory.SYSTEM_SERVICES
@@ -146,7 +146,7 @@ class buyBTSindicator(object):
         dialog.set_wrap_license(True)
         dialog.set_copyright('Copyright 2018 Ben Bird and contributors')
         dialog.set_comments('Track EOS token prices on Linux (Unity desktop)\n'+'Loaded with Python '+ str(sys.version_info[0]) +'\n\n'+'Your donations help:\n\n' + 'BTS: buy-bitcoin\n' +'BitUSD: buy-bitcoin\n'+'Bitcoin: 1FZhqidv4oMRoiry9mGASFL7JSgdB27Mmn')
-        dialog.set_website('http://www.buybts.com')
+        dialog.set_website('https://github.com/happyconcepts/eos-indicator/')
         pixbuf = Pixbuf.new_from_file_at_size("icons/eos.png", 45, 45)
         dialog.set_logo(pixbuf)
         dialog.run()
@@ -396,5 +396,5 @@ if __name__ == "__main__":
 
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     print ("starting "+APPID +" v. "+VERSION)
-    ind = buyBTSindicator()
+    ind = EOSindicator()
     ind.main()
