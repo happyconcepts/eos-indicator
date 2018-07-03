@@ -6,7 +6,7 @@
 # mit license
 
 VERSION = '1.0'
-APPID 	= 'eos-indicator'
+APPID 	= 'EOS-indicator'
 
 import os
 import requests
@@ -94,7 +94,7 @@ class EOSindicator(object):
         self.menu.append(item_refresh)
 
         item_about = Gtk.MenuItem()
-        item_about.set_label("About eos-indicator...")
+        item_about.set_label("About EOS-indicator...")
         item_about.connect("activate", self.about)
         item_about.show()
         self.menu.append(item_about)
@@ -140,12 +140,12 @@ class EOSindicator(object):
     def about(self, source):
         dialog = Gtk.AboutDialog()
         dialog.set_border_width(10)
-        dialog.set_program_name('eos-indicator')
+        dialog.set_program_name('EOS-indicator')
         dialog.set_version(VERSION)
         dialog.set_license('MIT License\n\n' + ' A copy of the license is available at https://github.com/happyconcepts/eos-indicator/blob/master/LICENSE' )
         dialog.set_wrap_license(True)
         dialog.set_copyright('Copyright 2018 Ben Bird and contributors')
-        dialog.set_comments('Track EOS token prices on Linux (Unity desktop)\n'+'Loaded with Python '+ str(sys.version_info[0]) +'\n\n'+'Your donations help:\n\n' + 'BTS: buy-bitcoin\n' +'BitUSD: buy-bitcoin\n'+'Bitcoin: 1FZhqidv4oMRoiry9mGASFL7JSgdB27Mmn')
+        dialog.set_comments('Track EOS token prices on Linux (Unity desktop)\n'+'Loaded with Python '+ str(sys.version_info[0]) +'\n\n'+'Your donations help:\n\n' + 'BTS: eos-indicator\n' +'Bitcoin: 1FZhqidv4oMRoiry9mGASFL7JSgdB27Mmn')
         dialog.set_website('https://github.com/happyconcepts/eos-indicator/')
         pixbuf = Pixbuf.new_from_file_at_size("icons/eosio.jpg", 64, 64)
         dialog.set_logo(pixbuf)
@@ -155,7 +155,7 @@ class EOSindicator(object):
     def save_settings(self):
 
         with open(prefFile, 'w') as uf:
-            uf.write('{"version":"0.1","base":"' +ind.base +'","interval":"'+str(ind.interval)+'","modified":"'+datetime.now().strftime('%m/%d %H:%M:%S')+'"}\n')
+            uf.write('{"version":"1.0","base":"' +ind.base +'","interval":"'+str(ind.interval)+'","modified":"'+datetime.now().strftime('%m/%d %H:%M:%S')+'"}\n')
 
     def price_update(self):
         timestamp = datetime.now().strftime('%m/%d %H:%M:%S')
@@ -165,6 +165,12 @@ class EOSindicator(object):
                 self.b = binance(self.symbol)
 
                 if self.base =='EUR':
+                    self.c = coinmktcap(self.symbol, self.base)
+                    self.ind.set_label(self.c.run() + " ~BTC: "+ self.b.run() , "")
+                    self.ind.set_icon(os.path.dirname(os.path.realpath(__file__)) +"/icons/eos.png")
+                    print (timestamp + " EOS price: "+ self.c.price())
+
+                elif self.base =='CNY':
                     self.c = coinmktcap(self.symbol, self.base)
                     self.ind.set_label(self.c.run() + " ~BTC: "+ self.b.run() , "")
                     self.ind.set_icon(os.path.dirname(os.path.realpath(__file__)) +"/icons/eos.png")
@@ -223,7 +229,7 @@ class gate:
             # its a number
                 chg = str(json['percentChange'])
 
-            # kludge fix #15 truncate str at 6 char.
+            # truncate @  6 char.
             chg = (chg[:5]) if len(chg) > 5 else chg
 
             if chg[:1] != '-':
@@ -281,11 +287,15 @@ class coinmktcap:
                 self.chg = " +"+ self.chg +"% "
             else:
                 self.chg = " ("+self.chg+"%) "
-            return u'\u20AC' + str(self.last) + " "+ self.chg
-
+            if self.base == 'EUR':
+                return u'\u20AC' + str(self.last) + " "+ self.chg
+            else:
+                return u'\u00a5' + str(self.last) + " "+ self.chg # yuan
     def price(self):
-        return  u'\u20AC'+str(self.last)
-
+        if self.base == 'EUR':
+            return  u'\u20AC'+str(self.last)
+        else:
+            return  u'\u00a5'+str(self.last) # yuan
 
 class SettingsWindow(Gtk.Window):
     def __init__(self):
@@ -326,8 +336,18 @@ class SettingsWindow(Gtk.Window):
 
         button2.connect("clicked", self.change_base, "EUR")
 
-	# integer rturned is the model index of the currently active item, or -1 if no active item.
         hbox.pack_start(button2, False, False, 0)
+
+        button3 = Gtk.RadioButton.new_from_widget(button1)
+        button3.set_label(u'\u00a5' +" Yuan")
+
+        if ind.base == 'CNY':
+            button3.set_active(True)
+
+        button3.connect("clicked", self.change_base, "CNY")
+
+        hbox.pack_start(button3, False, False, 0)
+
         box_outer.pack_start(hbox, True, True, 0)
 
         hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
