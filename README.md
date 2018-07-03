@@ -1,9 +1,11 @@
-# eos-indicator
+# EOS-indicator
 The lightweight Ubuntu Indicator tracks the price of EOS crypto tokens.
 
 Version 1.0 release 3 July 2018
 
-EOS-indicator by @happyconcepts will monitor the price of EOS tokens. Price data is provided by the Binance exchange API with more API support planned for future relases.
+![eos-logo](icons/eosio.jpg "EOS")
+
+EOS-indicator by @happyconcepts will monitor the price of [EOS](https://eos.io) tokens. Price data is provided by the Binance exchange API with more API support planned for future relases.
 
 Please report bugs and suggestions as [issues](https://github.com/happyconcepts/eos-indicator/issues) via the Github repository!
 
@@ -20,7 +22,7 @@ You can support this project when you make a free Binance trading account at [ht
 For testing we use Py.test so unit test scripts should be prefixed with test_ .
 
 # Compatibility
-This unofficial application indicator uses gtk3 
+This unofficial application indicator uses gtk3.
 
 # Donations
 
@@ -28,9 +30,9 @@ This unofficial application indicator uses gtk3
 
 `Bitcoin/BTC` 1FZhqidv4oMRoiry9mGASFL7JSgdB27Mmn
 
-'Ether/ETH` 0x496674877679f6a4812bb7c3aa84fb67683fb85b
+`Ether/ETH` 0x496674877679f6a4812bb7c3aa84fb67683fb85b
 
-'Neo` ANtzxy3uv3zYpKVfDfFcBr4WBHdmo1zFMx
+`Neo` ANtzxy3uv3zYpKVfDfFcBr4WBHdmo1zFMx
 
 `BitcoinCash/BCC` 1FZhqidv4oMRoiry9mGASFL7JSgdB27Mmn
 
