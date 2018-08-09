@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# eos-indicator copyright 2018 ben bird
-# https://github.com/happyconcepts/eos-indicator
+# eos-investor copyright 2018 ben bird
+# https://github.com/happyconcepts/eos-investor
 # mit license
 
 VERSION = '1.0'
-APPID 	= 'EOS-indicator'
+APPID 	= 'EOS-investor'
 
 import os
 import requests
@@ -25,7 +25,7 @@ from gi.repository import AppIndicator3 as AppIndicator
 
 PROJECTDIR = os.path.dirname(os.path.realpath(__file__))
 
-dir = os.path.expanduser("~") +"/.eos-indicator"
+dir = os.path.expanduser("~") +"/.eos-investor"
 if not os.path.exists(dir):
     os.makedirs(dir)
 prefFile = os.path.join(dir, 'prefs.json')
@@ -94,7 +94,7 @@ class EOSindicator(object):
         self.menu.append(item_refresh)
 
         item_about = Gtk.MenuItem()
-        item_about.set_label("About EOS-indicator...")
+        item_about.set_label("About ...")
         item_about.connect("activate", self.about)
         item_about.show()
         self.menu.append(item_about)
@@ -140,13 +140,13 @@ class EOSindicator(object):
     def about(self, source):
         dialog = Gtk.AboutDialog()
         dialog.set_border_width(10)
-        dialog.set_program_name('EOS-indicator')
+        dialog.set_program_name('EOS-investor')
         dialog.set_version(VERSION)
-        dialog.set_license('MIT License\n\n' + ' A copy of the license is available at https://github.com/happyconcepts/eos-indicator/blob/master/LICENSE' )
+        dialog.set_license('MIT License\n\n' + ' A copy of the license is available at https://github.com/happyconcepts/eos-investor/blob/master/LICENSE' )
         dialog.set_wrap_license(True)
         dialog.set_copyright('Copyright 2018 Ben Bird and contributors')
         dialog.set_comments('Track EOS token prices on Linux (Unity desktop)\n'+'Loaded with Python '+ str(sys.version_info[0]) +'\n\n'+'Your donations help:\n\n' + 'BTS: eos-indicator\n' +'Bitcoin: 1FZhqidv4oMRoiry9mGASFL7JSgdB27Mmn')
-        dialog.set_website('https://github.com/happyconcepts/eos-indicator/')
+        dialog.set_website('https://github.com/happyconcepts/eos-investor/')
         pixbuf = Pixbuf.new_from_file_at_size("icons/eosio.jpg", 64, 64)
         dialog.set_logo(pixbuf)
         dialog.run()
@@ -194,7 +194,7 @@ class EOSindicator(object):
 
         except Exception as e:
 
-            self.ind.set_label("eos-indicator","")
+            self.ind.set_label("eos-investor","")
             self.ind.set_icon(os.path.dirname(os.path.realpath(__file__)) +"/icons/bell_on.png")
 
             print (timestamp + " prices not updated (check connection)")
