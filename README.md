@@ -1,5 +1,6 @@
 # EOS-investor
 ![eos-investor-logo](icons/eos-investor.png "EOS Investor")
+
 The lightweight Ubuntu Indicator tracks the price of EOS crypto tokens.
 
 Version 1.0 release 3 July 2018
