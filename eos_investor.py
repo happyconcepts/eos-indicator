@@ -145,7 +145,7 @@ class EOSindicator(object):
         dialog.set_license('MIT License\n\n' + ' A copy of the license is available at https://github.com/happyconcepts/eos-investor/blob/master/LICENSE' )
         dialog.set_wrap_license(True)
         dialog.set_copyright('Copyright 2018 Ben Bird and contributors')
-        dialog.set_comments('Track EOS token prices on Linux (Unity desktop)\n'+'Loaded with Python '+ str(sys.version_info[0]) +'\n\n'+'Your donations help:\n\n' + 'BTS: eos-indicator\n' +'Bitcoin: 1FZhqidv4oMRoiry9mGASFL7JSgdB27Mmn')
+        dialog.set_comments('Track the latest price of EOS \n'+'with this free open source Linux desktop indicator!\n'+'Loaded with Python '+ str(sys.version_info[0]) +'\n\n'+'Your donations help:\n\n' + 'BTS: eos-indicator\n' +'Bitcoin: 1FZhqidv4oMRoiry9mGASFL7JSgdB27Mmn')
         dialog.set_website('https://github.com/happyconcepts/eos-investor/')
         pixbuf = Pixbuf.new_from_file_at_size("icons/eosio.jpg", 64, 64)
         dialog.set_logo(pixbuf)
