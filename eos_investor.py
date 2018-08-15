@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# eos-investor copyright 2018 ben bird
 # https://github.com/happyconcepts/eos-investor
 # mit license
 
-VERSION = '1.0'
+VERSION = '1.1'
 APPID 	= 'EOS-investor'
 
 import os
@@ -147,8 +146,7 @@ class EOSindicator(object):
         dialog.set_copyright('Copyright 2018 Ben Bird and contributors')
         dialog.set_comments('Track the latest price of EOS \n'+'with this free open source Linux desktop indicator!\n'+'Loaded with Python '+ str(sys.version_info[0]) +'\n\n'+'Your donations help:\n\n' + 'BTS: eos-indicator\n' +'Bitcoin: 1FZhqidv4oMRoiry9mGASFL7JSgdB27Mmn')
         dialog.set_website('https://github.com/happyconcepts/eos-investor/')
-        #pixbuf = Pixbuf.new_from_file_at_size("icons/eosio.jpg", 64, 64)
-        pixbuf = Pixbuf.new_from_file_at_size("icons/eos-investor.png", 308, 155)
+        pixbuf = Pixbuf.new_from_file_at_size("icons/eos-investor.png", 203, 105)
         dialog.set_logo(pixbuf)
         dialog.run()
         dialog.destroy()
