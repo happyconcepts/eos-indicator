@@ -88,7 +88,7 @@ class EOSindicator(object):
 
         item_refresh = Gtk.MenuItem()
         item_refresh.set_label("Update Prices")
-        item_refresh.connect0("activate", self.handler_menu_reload)
+        item_refresh.connect("activate", self.handler_menu_reload)
         item_refresh.show()
         self.menu.append(item_refresh)
 
