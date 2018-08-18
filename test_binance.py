@@ -3,14 +3,10 @@
 
 # python -m unittest test_binance
 
-import unittest
 import eos_investor
+import unittest
 
-
-class TestEOSIndicator(unittest.TestCase):
-
-    def setUpModule():
-	    print ("in setUpModule()")
+class TestEOSInvestor(unittest.TestCase):
 
     # test reference
     def test_Add(self):
