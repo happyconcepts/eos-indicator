@@ -1,6 +1,7 @@
 build/*
 eos-investor/
 *.pyc
+__pycache__/
 
 # Unit test
 coverage.xml
