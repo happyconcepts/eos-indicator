@@ -1,5 +1,5 @@
 build/*
-eos-indicator/
+eos-investor/
 *.pyc
 
 # Unit test
